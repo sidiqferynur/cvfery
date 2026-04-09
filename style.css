@@ -1,0 +1,72 @@
+:root {
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --accent: #00d2ff;
+    --text: #ffffff;
+}
+
+body {
+    margin: 0; padding: 0; min-height: 100vh;
+    background: #0f172a; font-family: 'Inter', sans-serif;
+    display: flex; justify-content: center; align-items: center; overflow-x: hidden;
+}
+
+/* Background Blobs (Efek Estetik) */
+.background-blobs {
+    position: fixed; width: 100%; height: 100%; z-index: -1;
+}
+.blob {
+    position: absolute; width: 400px; height: 400px;
+    background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+    filter: blur(80px); border-radius: 50%; opacity: 0.3; animation: float 10s infinite alternate;
+}
+.blob:nth-child(2) { right: -50px; bottom: -50px; background: #9d50bb; width: 500px; }
+
+@keyframes float { from { transform: translate(0,0); } to { transform: translate(30px, 50px); } }
+
+/* Main Glass Card */
+.glass-container {
+    width: 90%; max-width: 1000px; min-height: 600px;
+    background: var(--glass-bg); backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border); border-radius: 24px;
+    display: flex; color: var(--text); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+}
+
+.sidebar {
+    width: 35%; padding: 40px; border-right: 1px solid var(--glass-border);
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+}
+
+.profile-frame {
+    width: 120px; height: 120px; border-radius: 20px; overflow: hidden;
+    margin-bottom: 20px; border: 2px solid var(--accent);
+}
+.profile-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+.tagline { color: var(--accent); font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 30px; }
+
+.contact-info { width: 100%; text-align: left; font-size: 0.85rem; }
+.info-item { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+.info-item i { color: var(--accent); width: 15px; }
+
+.skill-tag {
+    display: inline-block; padding: 5px 12px; background: rgba(255,255,255,0.1);
+    border-radius: 20px; font-size: 0.75rem; margin: 4px; border: 1px solid var(--glass-border);
+}
+
+.content { width: 65%; padding: 50px; }
+.title { color: var(--accent); font-size: 1.1rem; margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 5px; }
+
+.timeline-item { margin-bottom: 25px; position: relative; padding-left: 20px; border-left: 2px solid var(--accent); }
+.date { font-size: 0.75rem; opacity: 0.6; display: block; margin: 5px 0; }
+
+@media (max-width: 768px) {
+    .glass-container { flex-direction: column; }
+    .sidebar, .content { width: 100%; border: none; }
+}
+.profile-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ini penting agar foto tidak gepeng */
+    display: block;
+}
